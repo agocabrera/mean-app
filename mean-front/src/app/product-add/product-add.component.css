@@ -1,0 +1,53 @@
+.add-product-container {
+  margin: 30px auto;
+  max-width: 400px;
+}
+
+.input-group {
+  margin: 30px 0px;
+}
+
+label {
+  display: block;
+  padding-bottom: 5px;
+}
+
+input,
+textarea {
+  display: block;
+  width: 100%;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+input {
+  height: calc(1rem + 20px);
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  display: block;
+  box-sizing: content-box;
+  height: 1rem;
+  font-size: 1rem;
+  padding: 20px;
+  margin: 0px auto;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: #ffffff;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: lightgreen;
+}
+
+button:disabled {
+  background-color: inherit;
+  cursor: not-allowed;
+}

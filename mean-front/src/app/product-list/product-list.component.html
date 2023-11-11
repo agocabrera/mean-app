@@ -1,0 +1,37 @@
+<div class="navigation">
+  <a routerLink="/products/add">Add a product &rarr;</a>
+</div>
+
+<div class="product-list-container">
+  <h2>Product list</h2>
+
+  <table *ngIf="products.length > 0; else elseBlock">
+    <thead>
+      <tr class="header-row">
+        <th>Name</th>
+        <th>Description</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of products">
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+          <button class="delete-btn" (click)="handleDelete(product._id)">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24">
+              <path
+                d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"
+              />
+            </svg>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <ng-template #elseBlock>
+    <p>There are no products to list.</p>
+  </ng-template>
+</div>

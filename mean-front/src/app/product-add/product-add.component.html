@@ -1,0 +1,47 @@
+<div class="navigation">
+  <a routerLink="/products/list">&larr; Product list</a>
+</div>
+
+<div class="add-product-container">
+  <h2>Add a new product</h2>
+
+  <form [formGroup]="addProductForm" (ngSubmit)="handlePost()">
+    <div class="input-group">
+      <label for="name">Name</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        minlength="2"
+        maxlength="40"
+        formControlName="name"
+      />
+    </div>
+
+    <div class="input-group">
+      <label for="description">Description</label>
+      <textarea
+        id="description"
+        name="description"
+        rows="10"
+        minlength="2"
+        maxlength="360"
+        formControlName="description"
+      ></textarea>
+    </div>
+
+    <div class="input-group">
+      <label>Price</label>
+      <input
+        type="number"
+        id="number"
+        name="number"
+        pattern="^\d*(\.\d{0,2})?$"
+        min="0.01"
+        max="10000"
+        formControlName="price"
+      />
+    </div>
+    <button type="submit" [disabled]="addProductForm.invalid">Add</button>
+  </form>
+</div>
