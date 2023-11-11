@@ -1,3 +1,3 @@
 export const environment = {
-  apiUri: 'https://mean-app.onrender.com',
+  apiUri: 'https://mean-app-mu2y.onrender.com',
 };
