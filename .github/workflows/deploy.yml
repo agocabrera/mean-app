@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
         with:
-          path: mean-front
+          path: mean-app
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -24,11 +24,11 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: mean-front
+        working-directory: mean-app/mean-front
 
       - name: Build Angular app
         run: npm run build
-        working-directory: mean-front
+        working-directory: mean-app/mean-front
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
