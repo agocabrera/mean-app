@@ -14,8 +14,6 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        with:
-          path: mean-app
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -24,15 +22,15 @@ jobs:
 
       - name: Install dependencies
         run: npm install
-        working-directory: mean-app/mean-front
+        working-directory: mean-front
 
       - name: Build Angular app
         run: npm run build
-        working-directory: mean-app/mean-front
+        working-directory: mean-front
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: mean-app/mean-front/dist
+          publish_dir: mean-front/dist
           publish_branch: gh-pages
