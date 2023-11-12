@@ -2,6 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
+    paths:
+      - "mean-front/**"
     branches:
       - master
 
@@ -12,9 +14,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-
-      - name: Change directory to mean-front
-        run: cd mean-front
+        with:
+          path: mean-front
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
