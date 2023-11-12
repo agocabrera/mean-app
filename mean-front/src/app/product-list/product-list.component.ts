@@ -9,13 +9,17 @@ import Product from '../models/product.model';
 })
 export class ProductListComponent implements OnInit {
   private dataService: DataService;
+  public loadingData!: boolean;
+  public loadingMessage: string = 'Loading';
+  private dotsRemaining: number = 3;
+  private intervalId: any;
   public products: Product[] = [];
 
   constructor(dataService: DataService) {
     this.dataService = dataService;
   }
 
-  handleDelete(id: string) {
+  handleDelete(id: string): void {
     this.dataService.deleteProduct(id).subscribe({
       next: () => {
         for (let i = 0; i < this.products.length; i++) {
@@ -31,10 +35,25 @@ export class ProductListComponent implements OnInit {
     });
   }
 
+  animateLoading(): void {
+    this.loadingMessage = this.loadingMessage + '.';
+    this.dotsRemaining--;
+    if (this.dotsRemaining < 0) {
+      this.loadingMessage = 'Loading';
+      this.dotsRemaining = 3;
+    }
+  }
+
   ngOnInit() {
+    this.loadingData = true;
+    this.intervalId = setInterval(() => {
+      this.animateLoading();
+    }, 200);
     this.dataService.getProducts().subscribe((data) => {
       console.log('Fetched product list:', data);
       this.products = data;
+      this.loadingData = false;
+      clearInterval(this.intervalId);
     });
   }
 }
